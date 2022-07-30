@@ -132,17 +132,17 @@ build:
 .PHONY: install
 install:
 	- mkdir -p /usr/libexec/osbuild-composer
-	cp bin/osbuild-composer /usr/libexec/osbuild-composer/
-	cp bin/osbuild-worker /usr/libexec/osbuild-composer/
-	cp dnf-json /usr/libexec/osbuild-composer/
+	install bin/osbuild-composer /usr/libexec/osbuild-composer/
+	install bin/osbuild-worker /usr/libexec/osbuild-composer/
+	install dnf-json /usr/libexec/osbuild-composer/
 	- mkdir -p /usr/share/osbuild-composer/repositories
-	cp repositories/* /usr/share/osbuild-composer/repositories
+	install repositories/* /usr/share/osbuild-composer/repositories
 	- mkdir -p /etc/sysusers.d/
-	cp distribution/osbuild-composer.conf /etc/sysusers.d/
+	install distribution/osbuild-composer.conf /etc/sysusers.d/
 	systemd-sysusers osbuild-composer.conf
 	- mkdir -p /etc/systemd/system/
-	cp distribution/*.service /etc/systemd/system/
-	cp distribution/*.socket /etc/systemd/system/
+	install distribution/*.service /etc/systemd/system/
+	install distribution/*.socket /etc/systemd/system/
 	systemctl daemon-reload
 
 CERT_DIR=/etc/osbuild-composer
@@ -245,4 +245,3 @@ scratch: $(RPM_SPECFILE) $(RPM_TARBALL)
 		--without tests \
 		--nocheck \
 		$(RPM_SPECFILE)
-
