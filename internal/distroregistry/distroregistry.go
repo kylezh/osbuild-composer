@@ -25,6 +25,7 @@ var supportedDistros = []supportedDistro{
 	{rhel8.NewRHEL86, rhel8.NewRHEL86HostDistro},
 	{rhel8.NewRHEL87, rhel8.NewRHEL87HostDistro},
 	{rhel8.NewCentos, rhel8.NewCentosHostDistro},
+	{rhel8.NewRocky, rhel8.NewRockyHostDistro},
 	{rhel90.New, rhel90.NewHostDistro},
 	{rhel90.NewRHEL91, rhel90.NewRHEL91HostDistro},
 	{rhel90.NewCentos, rhel90.NewCentosHostDistro},
@@ -121,6 +122,10 @@ func mangleHostDistroName(name string, isBeta, isStream bool) string {
 	// override repository for centos stream, remove when CentOS 8 is EOL
 	if isStream && hostDistroName == "centos-8" {
 		hostDistroName = "centos-stream-8"
+	}
+
+	if isStream && hostDistroName == "rocky-8" {
+		hostDistroName = "rocky-stream-8"
 	}
 
 	return hostDistroName

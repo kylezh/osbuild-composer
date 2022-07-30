@@ -1,0 +1,26 @@
+{
+  "aarch64": [
+    {
+      "name": "baseos",
+      "baseurl": "https://download.rockylinux.org/pub/rocky/8/BaseOS/aarch64/os/",
+      "check_gpg": false
+    },
+    {
+      "name": "appstream",
+      "baseurl": "https://download.rockylinux.org/pub/rocky/8/AppStream/aarch64/os/",
+      "check_gpg": false
+    }
+  ],
+  "x86_64": [
+    {
+      "name": "baseos",
+      "baseurl": "https://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os/",
+      "check_gpg": false
+    },
+    {
+      "name": "appstream",
+      "baseurl": "https://download.rockylinux.org/pub/rocky/8/AppStream/x86_64/os/",
+      "check_gpg": false
+    }
+  ]
+}

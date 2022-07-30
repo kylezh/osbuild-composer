@@ -21,7 +21,7 @@ func GetHostDistroName() (string, bool, bool, error) {
 		return "", false, false, err
 	}
 
-	isStream := osrelease["NAME"] == "CentOS Stream"
+	isStream := osrelease["NAME"] == "CentOS Stream" || osrelease["NAME"] == "Rocky Stream"
 
 	// NOTE: We only consider major releases up until rhel 8.4
 	version := strings.Split(osrelease["VERSION_ID"], ".")

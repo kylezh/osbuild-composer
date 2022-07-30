@@ -177,6 +177,18 @@ var distroMap = map[string]distribution{
 		runner:             "org.osbuild.centos8",
 		defaultImageConfig: defaultDistroImageConfig,
 	},
+	"rocky-8": {
+		name:               "rocky-8",
+		product:            "Rocky Stream",
+		osVersion:          "8-stream",
+		releaseVersion:     "8",
+		modulePlatformID:   "platform:el8",
+		vendor:             "rocky",
+		ostreeRefTmpl:      "rocky/8/%s/edge",
+		isolabelTmpl:       "Rocky-Stream-8-%s-dvd",
+		runner:             "org.osbuild.rocky8",
+		defaultImageConfig: defaultDistroImageConfig,
+	},
 }
 
 func (d *distribution) Name() string {
@@ -696,6 +708,14 @@ func NewCentos() distro.Distro {
 
 func NewCentosHostDistro(name, modulePlatformID, ostreeRef string) distro.Distro {
 	return newDistro("centos-8")
+}
+
+func NewRocky() distro.Distro {
+	return newDistro("rocky-8")
+}
+
+func NewRockyHostDistro(name, modulePlatformID, ostreeRef string) distro.Distro {
+	return newDistro("rocky-8")
 }
 
 func newDistro(distroName string) distro.Distro {
